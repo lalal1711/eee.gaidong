@@ -1,4 +1,4 @@
-﻿const Version = '2026-06-09 13:29:03';
+const Version = '2026-06-09 13:29:03';
 let config_JSON, 反代IP = '', 启用SOCKS5反代 = null, 启用SOCKS5全局反代 = false, 我的SOCKS5账号 = '', parsedSocks5Address = {};
 let 缓存SOCKS5白名单 = null, 缓存反代IP, 缓存反代解析数组, 缓存反代数组索引 = 0, 启用反代兜底 = true, 调试日志打印 = false;
 
@@ -4820,7 +4820,7 @@ async function 请求日志记录(env, request, 访问IP, 请求类型 = "Get_SU
 function 掩码敏感信息(文本, 前缀长度 = 3, 后缀长度 = 2) {
 	if (!文本 || typeof 文本 !== 'string') return 文本;
 	// 掩码代理URL中的密码: proto://user:password@host -> proto://user:***@host
-	文本 = 文本.replace(/(socks5|http|https|turn|sstp):\/\/[^:]+:)([^@]+)@/gi, '$1***@');
+	文本 = 文本.replace(/(socks5|http|https|turn|sstp):\/\/[^:]+:([^@]+)@/gi, '$1***@');
 	// 掩码 Base64 编码的 socks://base64... 格式
 	文本 = 文本.replace(/(socks:\/\/)[A-Za-z0-9+/=]{4,}(?=@)/g, '$1***');
 	if (文本.length <= 前缀长度 + 后缀长度) return 文本;
