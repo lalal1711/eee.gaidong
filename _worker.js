@@ -367,7 +367,7 @@ export default {
 					// #Security: CSP 与安全响应头
 					const admin响应 = await fetch(Pages静态页面 + '/admin' + url.search);
 					const admin头 = new Headers(admin响应.headers);
-					admin头.set('Content-Security-Policy', "default-src 'self'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data:; font-src 'self' https://cdnjs.cloudflare.com; connect-src 'self'");
+					admin头.set('Content-Security-Policy', "default-src 'self'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data: https:; font-src 'self' https://cdnjs.cloudflare.com; connect-src 'self' https: http:;");
 					admin头.set('X-Content-Type-Options', 'nosniff');
 					admin头.set('X-Frame-Options', 'DENY');
 					admin头.set('Referrer-Policy', 'no-referrer');
