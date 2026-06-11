@@ -1,0 +1,43 @@
+name = "v20251104"
+main = "_worker.js"
+compatibility_date = "2025-11-04"
+keep_vars = true
+
+# ============================
+# KV 命名空间绑定（必需）
+# ============================
+# 1. 在 CF Dashboard 创建一个 KV 命名空间
+# 2. 将绑定名设置为 KV，ID 替换为你的命名空间 ID
+#[[kv_namespaces]]
+#binding = "KV"
+#id = ""
+
+# ============================
+# D1 数据库绑定（可选 - 用于持久化流量统计）
+# ============================
+# 1. 在 CF Dashboard 创建一个 D1 数据库
+# 2. 将绑定名设置为 DB
+#[[d1_databases]]
+#binding = "DB"
+#database_name = "edgetunnel-logs"
+#database_id = ""
+
+# ============================
+# 环境变量
+# ============================
+# [vars]
+# ADMIN = "your_admin_password"
+# KEY = "your_subscription_key"
+# UUID = "00000000-0000-4000-8000-000000000000"
+# PROXYIP = "proxyip.example.com:443"
+# URL = "https://example.com"
+# GO2SOCKS5 = "blog.example.com,*google.com"
+# HOST = "example.com"
+# BEST_SUB = "true"
+# PRELOAD_RACE_DIAL = "true"
+
+# ============================
+# Cron Triggers（可选）
+# ============================
+# [triggers]
+# crons = ["*/30 * * * *"]
