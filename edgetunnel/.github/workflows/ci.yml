@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [main, beta*]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Check JavaScript syntax
+        run: node --check _worker.js
+
+      - name: Check file size
+        run: |
+          MAX_SIZE=$((512 * 1024))  # 512KB Cloudflare Worker limit
+          SIZE=$(wc -c < _worker.js)
+          if [ "$SIZE" -gt "$MAX_SIZE" ]; then
+            echo "ERROR: _worker.js is ${SIZE} bytes, exceeds ${MAX_SIZE} byte limit"
+            exit 1
+          fi
+          echo "OK: _worker.js is ${SIZE} bytes"
+
+  # deploy:
+  #   needs: lint
+  #   if: github.ref == 'refs/heads/main'
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - name: Deploy to Cloudflare Workers
+  #       uses: cloudflare/wrangler-action@v3
+  #       with:
+  #         apiToken: ${{ secrets.CF_API_TOKEN }}
