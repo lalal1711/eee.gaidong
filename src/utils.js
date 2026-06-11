@@ -166,7 +166,7 @@ export function log(...args) {
 export function 掩码敏感信息(文本, 前缀长度 = 3, 后缀长度 = 2) {
 	if (!文本 || typeof 文本 !== 'string') return 文本;
 	// 掩码代理URL中的密码: proto://user:password@host -> proto://user:***@host
-	文本 = 文本.replace(/(socks5|http|https|turn|sstp):\/\/[^:]+:)([^@]+)@/gi, '$1***@');
+	文本 = 文本.replace(/(socks5|http|https|turn|sstp):\/\/[^:]+:([^@]+)@/gi, '$1***@');
 	// 掩码 Base64 编码的 socks://base64... 格式
 	文本 = 文本.replace(/(socks:\/\/)[A-Za-z0-9+/=]{4,}(?=@)/g, '$1***');
 	if (文本.length <= 前缀长度 + 后缀长度) return 文本;
