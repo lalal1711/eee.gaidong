@@ -551,7 +551,7 @@ export function Surge订阅配置文件热补丁(content, url, config_JSON) {
 			const host = x.split("sni=")[1].split(",")[0];
 			const 备改内容 = `sni=${host}, skip-cert-verify=${config_JSON.跳过证书验证}`;
 			const 正确内容 = `sni=${host}, skip-cert-verify=${config_JSON.跳过证书验证}, ws=true, ws-path=${完整节点路径.replace(/,/g, '%2C')}, ws-headers=Host:"${host}"`;
-			输出内容 += x.replace(new RegExp(备改内容, 'g'), 正确内容).replace("[", "").replace("]", "") + '\n';
+			输出内容 += x.replace(new RegExp(备改内容, 'g'), 正确内容) + '\n';
 		} else {
 			输出内容 += x + '\n';
 		}

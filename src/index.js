@@ -32,4 +32,8 @@
 // This creates _worker.js from the src/ modules.
 //
 // For direct Cloudflare Workers deployment, use _worker.js directly.
-export { default } from '../_worker.js';
+//
+// NOTE: This module is the entry point for the src/ module structure.
+// The actual fetch handler is defined in _worker.js. If you need to
+// use the modular structure, import the required functions from
+// individual src/ modules (config.js, crypto.js, utils.js, etc.).

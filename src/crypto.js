@@ -158,7 +158,7 @@ export function 获取UUID字节(uuid) {
 		bytes[i] = (high << 4) | low;
 	}
 
-	if (UUID字节缓存.size >= 32) UUID字节缓存.clear();
+	if (UUID字节缓存.size >= 128) { const firstKey = UUID字节缓存.keys().next().value; UUID字节缓存.delete(firstKey); }
 	UUID字节缓存.set(key, bytes);
 	return bytes;
 }

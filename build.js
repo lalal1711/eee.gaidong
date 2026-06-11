@@ -74,13 +74,11 @@ function build() {
     parts.push(`// ===== Module: ${mod} =====\n${content}\n`);
   }
 
-  // Add the main export
+  // Add the main export (references the fetch handler directly in the concatenated code)
   parts.push(`// ===== Main entry point =====
-export default {
-  async fetch(request, env, ctx) {
-    return await handleRequest(request, env, ctx);
-  }
-};
+// NOTE: The src/ modules provide utilities. The main fetch handler
+// should be defined in the concatenated output or imported separately.
+// For direct deployment, use _worker.js directly.
 `);
 
   const result = parts.join('\n');
